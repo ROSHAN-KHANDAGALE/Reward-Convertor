@@ -1,14 +1,30 @@
-import java.util.Scanner;
-
 public class RewardValue {
+    private double cashValue;
+    private double milesValue;
+
     public RewardValue(double cashValue) {
+        this.cashValue = cashValue;
+        this.milesValue = cashToMiles(cashValue);
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the value of Cash: ");
-        Integer cashValue = sc.nextInt();
-        System.out.println("Enter the value of Miles: ");
-        Integer milesValue = sc.nextInt();
+    public RewardValue(int milesValue) {
+        this.milesValue = milesValue;
+        this.cashValue = milesToCash(milesValue);
+    }
+
+    public double getCashValue() {
+        return cashValue;
+    }
+
+    public int getMilesValue() {
+        return (int)milesValue;
+    }
+
+    private double cashToMiles(double cash) {
+        return cash / 0.0035;
+    }
+
+    private double milesToCash(int miles) {
+        return miles * 0.0035;
     }
 }
